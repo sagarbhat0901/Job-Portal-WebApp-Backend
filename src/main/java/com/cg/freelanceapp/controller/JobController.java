@@ -101,4 +101,60 @@ public class JobController {
 		
 	}
 
+	@GetMapping("/sortById")
+	public ResponseEntity<Object> sortById(){
+		Object sd = jobService.sortingById();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortByIdDesc")
+	public ResponseEntity<Object> sortByIdDesc(){
+		Object sd = jobService.sortingByIdDesc();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortByTitle")
+	public ResponseEntity<Object> sortByTitle(){
+		Object sd = jobService.sortingByTitle();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortByTitleDesc")
+	public ResponseEntity<Object> sortByTitleDesc(){
+		Object sd = jobService.sortingByTitleDesc();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortByExp")
+	public ResponseEntity<Object> sortByExp(){
+		Object sd = jobService.sortingByExp();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortByExpDesc")
+	public ResponseEntity<Object> sortByExpDesc(){
+		Object sd = jobService.sortingByExpDesc();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortBySal")
+	public ResponseEntity<Object> sortBySalary(){
+		Object sd = jobService.sortingBySalary();
+		return ResponseEntity.ok(sd);
+		
+	}
+	
+	@GetMapping("/sortBySalDesc")
+	public ResponseEntity<Object> sortBySalaryDesc(){
+		Object sd = jobService.sortingBySalaryDesc();
+		return ResponseEntity.ok(sd);
+		
+	}
+
 }

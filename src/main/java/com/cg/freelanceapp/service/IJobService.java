@@ -26,4 +26,13 @@ public interface IJobService {
 	void awardJob(Long jobId, Long freelancerId);
 
 	List<Object> filterJobs(String filterName, String filterValue);
+
+	List<Object> sortingByIdDesc();
+	List<Object> sortingById();
+	List <Object> sortingByTitle();
+	List <Object> sortingByTitleDesc();
+	List <Object> sortingByExp();
+	List <Object> sortingByExpDesc();
+	List <Object> sortingBySalary();
+	List <Object> sortingBySalaryDesc();
 }

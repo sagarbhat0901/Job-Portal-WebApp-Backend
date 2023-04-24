@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.freelanceapp.dao.IFreelancerDao;
 import com.cg.freelanceapp.dao.IJobDao;
+import com.cg.freelanceapp.dao.IJobExperienceDao;
 import com.cg.freelanceapp.dao.IJobTypeDao;
 import com.cg.freelanceapp.dao.IQualificationRequiredDao;
 import com.cg.freelanceapp.dao.IRecruiterDao;
@@ -16,6 +17,7 @@ import com.cg.freelanceapp.dto.JobDTO;
 import com.cg.freelanceapp.dto.QualificationRequiredDTO;
 import com.cg.freelanceapp.entities.Freelancer;
 import com.cg.freelanceapp.entities.Job;
+import com.cg.freelanceapp.entities.JobExperience;
 import com.cg.freelanceapp.entities.JobType;
 import com.cg.freelanceapp.entities.QualificationRequired;
 import com.cg.freelanceapp.entities.WorkType;
@@ -46,6 +48,9 @@ public class JobServiceImpl implements IJobService {
 	
 	@Autowired
 	IQualificationRequiredDao qualificationRequiredDao;
+	
+	@Autowired
+	IJobExperienceDao jobExperienceDao;
 
 	public void close(Long id) {
 		if (jobdao.existsById(id)) {
@@ -91,12 +96,15 @@ public class JobServiceImpl implements IJobService {
 			job.setActive(true);
 			job.setJobTitle(jobdto.getJobTitle());
 			job.setJobDescription(jobdto.getJobDescription());
+			job.setJobSalary(jobdto.getJobSalary());
 			WorkType workType = new WorkType(jobdto.getWork_id(),workTypeDao.findWorkTypeById(jobdto.getWork_id()));
 			job.setWorkType(workType);
 			JobType jobType = new JobType(jobdto.getType_id(),jobTypeDao.findJobTypeById(jobdto.getType_id()));
 			job.setJobType(jobType);
 			QualificationRequired qualificationRequired = new QualificationRequired(jobdto.getQualification_id(),qualificationRequiredDao.findQualificationRequiredById(jobdto.getQualification_id()));
 			job.setQualificationRequired(qualificationRequired);
+			JobExperience jobExperience = new JobExperience(jobdto.getExp_id(),jobExperienceDao.findJobExperienceById(jobdto.getExp_id()));
+			job.setJobExperience(jobExperience);
 			return jobdao.save(job);
 		}  
 		else
@@ -140,6 +148,47 @@ public class JobServiceImpl implements IJobService {
 		}
 		return null;
 		
+	}
+
+	@Override
+	public List<Object> sortingByIdDesc() {
+	return jobdao.sortByIdDesc();
+	}
+	
+	
+	@Override
+	public List<Object> sortingById() {
+	return jobdao.sortById();
+	}
+	
+	@Override
+	public List<Object> sortingByTitle() {
+	return jobdao.sortByTitle();
+	}
+	
+	@Override
+	public List<Object> sortingByTitleDesc() {
+	return jobdao.sortByTitleDesc();
+	}
+	
+	@Override
+	public List<Object> sortingByExp() {
+	return jobdao.sortByExp();
+	}
+	
+	@Override
+	public List<Object> sortingByExpDesc() {
+	return jobdao.sortByExpDesc();
+	}
+	
+	@Override
+	public List<Object> sortingBySalary() {
+	return jobdao.sortBySalary();
+	}
+	
+	@Override
+	public List<Object> sortingBySalaryDesc() {
+	return jobdao.sortBySalaryDesc();
 	}
 
 }

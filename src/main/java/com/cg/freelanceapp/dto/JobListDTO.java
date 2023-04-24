@@ -13,6 +13,7 @@ public class JobListDTO {
 	private String recruiterName;
 	private String jobTitle;
 	private String jobDescription;
+	private Long jobSalary;
 	private boolean jobStatus;
 	private Long workTypeId;
 	private String workTypeName;
@@ -20,10 +21,12 @@ public class JobListDTO {
 	private String jobTypeName;
 	private Long qualificationRequiredId;
 	private String qualificationRequiredName;
+	private Long jobExperienceId;
+	private String jobExperienceName;
 	
 	public JobListDTO(Long jobId, Long freelancerId, String freelancerName, Long skillId, String skillName,
-			Long recruiterId, String recruiterName, String jobTitle, String jobDescription, boolean jobStatus,
-			Long workTypeId, String workTypeName, Long jobTypeId, String jobTypeName, Long qualificationRequiredId, String qualificationRequiredName) {
+			Long recruiterId, String recruiterName, String jobTitle, String jobDescription, Long jobSalary, boolean jobStatus,
+			Long workTypeId, String workTypeName, Long jobTypeId, String jobTypeName, Long qualificationRequiredId, String qualificationRequiredName, Long jobExperienceId, String jobExperienceName) {
 		super();
 		this.jobId = jobId;
 		this.freelancerId = freelancerId;
@@ -34,6 +37,7 @@ public class JobListDTO {
 		this.recruiterName = recruiterName;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
+		this.jobSalary = jobSalary;
 		this.jobStatus = jobStatus;
 		this.workTypeId = workTypeId;
 		this.workTypeName = workTypeName;
@@ -41,6 +45,8 @@ public class JobListDTO {
 		this.jobTypeName = jobTypeName;
 		this.qualificationRequiredId = qualificationRequiredId;
 		this.qualificationRequiredName = qualificationRequiredName;
+		this.jobExperienceId = jobExperienceId;
+		this.jobExperienceName = jobExperienceName;
 	}
 	
 	public JobListDTO() {
@@ -155,6 +161,30 @@ public class JobListDTO {
 
 	public void setQualificationRequiredName(String qualificationRequiredName) {
 		this.qualificationRequiredName = qualificationRequiredName;
+	}
+
+	public Long getJobExperienceId() {
+		return jobExperienceId;
+	}
+
+	public void setJobExperienceId(Long jobExperienceId) {
+		this.jobExperienceId = jobExperienceId;
+	}
+
+	public String getJobExperienceName() {
+		return jobExperienceName;
+	}
+
+	public void setJobExperienceName(String jobExperienceName) {
+		this.jobExperienceName = jobExperienceName;
+	}
+
+	public Long getJobSalary() {
+		return jobSalary;
+	}
+
+	public void setJobSalary(Long jobSalary) {
+		this.jobSalary = jobSalary;
 	}
 
 }

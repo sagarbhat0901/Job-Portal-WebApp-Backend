@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,9 +37,14 @@ public class Job implements Serializable {
 	@SequenceGenerator(name = "job_seq", sequenceName = "job_seq", allocationSize = 1)
 	private Long id;
 
+	@Column(name = "job_title")
 	private String jobTitle;
 
+	@Column(name = "job_description")
 	private String jobDescription;
+	
+	@Column(name = "job_salary")
+	private Long jobSalary;
 
 	@OneToOne(targetEntity = Skill.class, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -73,14 +79,22 @@ public class Job implements Serializable {
 	private QualificationRequired qualificationRequired;
 	
 	private Boolean active;
+	
+	@OneToOne(targetEntity = JobExperience.class, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private JobExperience jobExperience;
+	
+	
+	
 
-	public Job(Long id, String jobTitle, String jobDescription, Skill skill, Recruiter postedBy, LocalDate postedDate,
+	public Job(Long id, String jobTitle, String jobDescription, Long jobSalary, Skill skill, Recruiter postedBy, LocalDate postedDate,
 			Freelancer awardedTo, List<JobApplication> jobApplications, JobType jobType, WorkType workType, QualificationRequired qualificationRequired,
-			Boolean active) {
+			Boolean active, JobExperience jobExperience) {
 		super();
 		this.id = id;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
+		this.jobSalary=jobSalary;
 		this.skill = skill;
 		this.postedBy = postedBy;
 		this.postedDate = postedDate;
@@ -90,6 +104,15 @@ public class Job implements Serializable {
 		this.workType = workType;
 		this.active = active;
 		this.qualificationRequired=qualificationRequired;
+		this.jobExperience = jobExperience;
+	}
+
+	public JobExperience getJobExperience() {
+		return jobExperience;
+	}
+
+	public void setJobExperience(JobExperience jobExperience) {
+		this.jobExperience = jobExperience;
 	}
 
 	public QualificationRequired getQualificationRequired() {
@@ -196,6 +219,16 @@ public class Job implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Long getJobSalary() {
+		return jobSalary;
+	}
+
+	public void setJobSalary(Long jobSalary) {
+		this.jobSalary = jobSalary;
+	}
+
+	
            
 
 		

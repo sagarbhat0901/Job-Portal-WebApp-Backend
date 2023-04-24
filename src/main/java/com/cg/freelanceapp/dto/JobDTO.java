@@ -12,9 +12,16 @@ public class JobDTO {
 
 	private String jobTitle;
 	private String jobDescription;
+	private Long jobSalary;
+	@NotNull(message = "workid cant be null")
 	private long work_id;
+	@NotNull(message = "typeid cant be null")
 	private long type_id;
+	@NotNull(message = "qualificationid cant be null")
 	private long qualification_id;
+	@NotNull(message = "expid cant be null")
+	private long exp_id;
+	
 	public JobDTO() {
 		super();
 	}
@@ -62,20 +69,34 @@ public class JobDTO {
 	}
 	
 	public JobDTO(long freelancerid, @NotNull(message = "skillId cant be null") long skillId,
-			@NotNull(message = "recruiterid cant be null") long recruiterId, String jobTitle, String jobDescription, long type_id, long work_id, long qualification_id) {
+			@NotNull(message = "recruiterid cant be null") long recruiterId, String jobTitle, String jobDescription, long jobSalary, long type_id, long work_id, long qualification_id, long exp_id) {
 		super();
 		this.freelancerid = freelancerid;
 		this.skillId = skillId;
 		this.recruiterId = recruiterId;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
+		this.jobSalary = jobSalary;
 		this.type_id = type_id;
 		this.work_id = work_id;
 		this.qualification_id=qualification_id;
+		this.exp_id = exp_id;
 }
 	public long getQualification_id() {
 		return qualification_id;
 	}
 	public void setQualification_id(long qualification_id) {
 		this.qualification_id = qualification_id;
+	}
+	public long getExp_id() {
+		return exp_id;
+	}
+	public void setExp_id(long exp_id) {
+		this.exp_id = exp_id;
+	}
+	public long getJobSalary() {
+		return jobSalary;
+	}
+	public void setJobSalary(long jobSalary) {
+		this.jobSalary = jobSalary;
 	}}
